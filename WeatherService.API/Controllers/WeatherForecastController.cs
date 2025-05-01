@@ -11,12 +11,11 @@ public class WeatherForecastController(ILogger<WeatherForecastController> logger
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
     ];
 
-    private readonly ILogger<WeatherForecastController> _logger = logger;
-
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public IEnumerable<WeatherForecast> GetWeatherForecast()
     {
         logger.LogInformation("Get WeatherForecast");
+        
         return Enumerable.Range(1, 5).Select(index => new WeatherForecast
         {
             Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),

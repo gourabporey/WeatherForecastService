@@ -1,37 +1,51 @@
-using Azure.Monitor.OpenTelemetry.AspNetCore;
+using Serilog;
+using WeatherService.API.Configuration;
+using WeatherService.API.Extensions;
 
-var builder = WebApplication.CreateBuilder(args);
+var serilogConfiguration = new SerilogConfiguration();
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Is(serilogConfiguration.MinimumLevel)
+    .WriteTo.Console(outputTemplate: serilogConfiguration.LogFormat)
+    .CreateLogger();
 
-// configuration
-builder.Configuration.AddJsonFile("appsettings.json", true, true);
-builder.Configuration.AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", true, true);
-builder.Configuration.AddEnvironmentVariables();
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
-
-var applicationInsightsKey = builder.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"];
-if (applicationInsightsKey == null)
+try
 {
-    throw new Exception("ApplicationInsights InstrumentationKey is missing or invalid");
+    Log.Information("Starting the application");
+    var builder = WebApplication.CreateBuilder(args);
+
+    builder.ConfigureSerilog();
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+
+    var applicationInsightsKey = builder.Configuration["Azure:ApplicationInsights:InstrumentationKey"];
+    if (applicationInsightsKey == null)
+    {
+        throw new Exception("ApplicationInsights InstrumentationKey is missing or invalid");
+    }
+
+    var app = builder.Build();
+
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseAuthentication();
+    app.UseAuthorization();
+    app.MapControllers();
+
+    app.Run();
+
 }
-builder.Services.AddOpenTelemetry().UseAzureMonitor(options => options.ConnectionString = applicationInsightsKey);
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+catch (Exception ex)
 {
-    app.MapOpenApi();
+    Log.Fatal(ex, "Application start-up failed");
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
+finally
+{
+    Log.Information("Stopping the application");
+    Log.CloseAndFlush();
+}

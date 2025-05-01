@@ -9,10 +9,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6fba6aa3-d9a2-4c16-b60a-f7c4ca65abef" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/WeatherService.API/Configuration/SerilogConfiguration.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WeatherService.API/Constants/ConfigConstants.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/WeatherService.API/Extensions/LoggingExtension.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WeatherService/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WeatherService/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WeatherService.API/Controllers/WeatherForecastController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WeatherService.API/Controllers/WeatherForecastController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WeatherService.API/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/WeatherService.API/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WeatherService.API/WeatherService.API.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/WeatherService.API/WeatherService.API.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeatherService.API/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/WeatherService.API/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WeatherService.API/appsettings.Development.json" beforeDir="false" afterPath="$PROJECT_DIR$/WeatherService.API/appsettings.Development.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +29,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file:///usr/local/share/dotnet/sdk/9.0.200/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_9_default.globalconfig" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2wBMmShGTzksrsvmAGzpAy5JVI1" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -36,7 +43,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    ".NET Launch Settings Profile.WeatherService.API: http.executor": "Debug",
+    ".NET Launch Settings Profile.WeatherService.API: http.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
@@ -99,24 +106,5 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/WeatherService.API/Program.cs</url>
-          <line>16</line>
-          <properties documentPath="$PROJECT_DIR$/WeatherService.API/Program.cs" containingFunctionPresentation="">
-            <startOffsets>
-              <option value="598" />
-            </startOffsets>
-            <endOffsets>
-              <option value="633" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
